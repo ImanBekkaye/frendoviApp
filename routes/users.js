@@ -1,7 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-var locations = []
+var locations = [
+    {
+        user: 'iman',
+        coordinates: {
+            latitude: 43.8462588,
+            longitude: 18.4330765,
+        },
+    },
+    {
+        user: 'emira',
+        coordinates: {
+            latitude: 44.8462365,
+            longitude: 18.4330778,
+        },
+    },
+]
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

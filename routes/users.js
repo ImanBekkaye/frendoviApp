@@ -3,16 +3,23 @@ var router = express.Router();
 
 var locations = [
     {
-        user: 'iman',
+        user: 'iman2',
         coordinates: {
             latitude: 43.8462588,
             longitude: 18.4330765,
         },
     },
     {
+        user: 'iman2',
+        coordinates: {
+            latitude: 44.8462588,
+            longitude: 18.4330765,
+        },
+    },
+    {
         user: 'emira',
         coordinates: {
-            latitude: 44.8462365,
+            latitude: 45.8462365,
             longitude: 18.4330778,
         },
     },

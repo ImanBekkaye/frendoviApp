@@ -55,7 +55,7 @@ router.post('/', function(req, res, next) {
     var location = {
         id: b++,
         email: req.body.email,
-        coordinate: []
+        coordinates: []
     };
     locations.push(location);
     res.send({

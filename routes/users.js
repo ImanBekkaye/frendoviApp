@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
+let b=2;
 var locations = [
-    {
+    {   id: 0,
         user: 'iman2',
         coordinates: {
             latitude: 43.8462588,
@@ -10,6 +10,7 @@ var locations = [
         },
     },
     {
+        id: 1,
         user: 'iman2',
         coordinates: {
             latitude: 44.8462588,
@@ -17,6 +18,7 @@ var locations = [
         },
     },
     {
+        id: 2,
         user: 'emira',
         coordinates: {
             latitude: 45.8462365,
@@ -36,15 +38,29 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
     var location = {
-
-        user: req.body.user,
+        id: b++,
+        email: req.body.email,
         coordinate: {
-            latitude: req.body.latitude,
-            longitude: req.body.longitude
-        },
-        time: req.body.time
+            latitude: null,
+            longitude: null
+        }
     };
     locations.push(location);
+    res.send({
+        success: true
+    })
+});
+router.post('/{:id}', function(req, res, next) {
+    //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
+    var user = location.map(user=>{
+        if(user.userId===req.body.id){
+            user.latitude= req.body.latitude;
+            user.longitude= req.body.longitude;
+            return true;
+        }
+        return false;
+    })
+    locations.push(user);
     res.send({
         success: true
     })

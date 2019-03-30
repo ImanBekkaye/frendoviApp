@@ -4,26 +4,26 @@ let b=2;
 var locations = [
     {   id: 0,
         email: 'iman2',
-        coordinates: {
+        coordinates:[ {
             latitude: 43.8462588,
             longitude: 18.4330765,
-        },
+        }],
     },
     {
         id: 1,
         email: 'iman2',
-        coordinates: {
+        coordinates:[ {
             latitude: 44.8462588,
             longitude: 18.4330765,
-        },
+        }],
     },
     {
         id: 2,
         email: 'emira',
-        coordinates: {
+        coordinates: [{
             latitude: 45.8462365,
             longitude: 18.4330778,
-        },
+        }],
     },
 ]
 
@@ -55,10 +55,7 @@ router.post('/', function(req, res, next) {
     var location = {
         id: b++,
         email: req.body.email,
-        coordinate: {
-            latitude: null,
-            longitude: null
-        }
+        coordinate: []
     };
     locations.push(location);
     res.send({
@@ -67,10 +64,13 @@ router.post('/', function(req, res, next) {
 });
 router.post('/:id', function(req, res, next) {
     //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
+    let obj={
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
+    };
     let userr = locations.find(user=>{
         if(user.id===req.params.id){
-            user.coordinate.latitude= req.body.latitude;
-            user.coordinate.longitude= req.body.longitude;
+            user.coordinates.push(obj);
             return true;
         }
         return false;

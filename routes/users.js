@@ -68,14 +68,12 @@ router.post('/:id', function(req, res, next) {
         latitude: 'kol',
         longitude: req.body.longitude
     };
-    let userr = locations.find(user=>{
-        if(user.id===req.params.id){
-            user.coordinates.push(obj);
-            return true;
+    for(let i = 0; i<locations.length;i++){
+        if(req.params.id=== locations[i].id){
+            locations[i].coordinates.push(obj);
+            break;
         }
-        return false;
-    })
-    console.log('update na usera', userr)
+    }
     //locations.push(user);
     res.send({
         success: true

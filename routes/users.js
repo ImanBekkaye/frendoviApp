@@ -3,7 +3,7 @@ var router = express.Router();
 let b=2;
 var locations = [
     {   id: 0,
-        user: 'iman2',
+        email: 'iman2',
         coordinates: {
             latitude: 43.8462588,
             longitude: 18.4330765,
@@ -11,7 +11,7 @@ var locations = [
     },
     {
         id: 1,
-        user: 'iman2',
+        email: 'iman2',
         coordinates: {
             latitude: 44.8462588,
             longitude: 18.4330765,
@@ -19,7 +19,7 @@ var locations = [
     },
     {
         id: 2,
-        user: 'emira',
+        email: 'emira',
         coordinates: {
             latitude: 45.8462365,
             longitude: 18.4330778,
@@ -69,8 +69,8 @@ router.post('/:id', function(req, res, next) {
     //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
     let userr = locations.find(user=>{
         if(user.id===req.params.id){
-            user.latitude= req.body.latitude;
-            user.longitude= req.body.longitude;
+            user.coordinate.latitude= req.body.latitude;
+            user.coordinate.longitude= req.body.longitude;
             return true;
         }
         return false;

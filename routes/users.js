@@ -33,6 +33,21 @@ router.get('/', function(req, res, next) {
       locationsSet: locations
   });
 });
+/* GET users listing. */
+router.get('/:id', function(req, res, next) {
+    var userr = locations.find((user)=>{
+        console.log('id',user.id)
+        console.log('id u parametru', req.params.id)
+        if(user.id==req.params.id){
+            console.log('nasli id');
+            return true;
+        }
+        console.log('nasli id nismo')
+        return false;
+    })
+    console.log('user na krjau',userr);
+    res.send(userr);
+});
 
 /* POST  */
 router.post('/', function(req, res, next) {
@@ -50,17 +65,18 @@ router.post('/', function(req, res, next) {
         success: true
     })
 });
-router.post('/{:id}', function(req, res, next) {
+router.post('/:id', function(req, res, next) {
     //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
-    var user = location.map(user=>{
-        if(user.userId===req.body.id){
+    var userr = locations.find(user=>{
+        if(user.id===req.params.id){
             user.latitude= req.body.latitude;
             user.longitude= req.body.longitude;
             return true;
         }
         return false;
     })
-    locations.push(user);
+    console.log('update na usera', userr)
+    //locations.push(user);
     res.send({
         success: true
     })

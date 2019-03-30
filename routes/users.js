@@ -69,16 +69,17 @@ router.post('/:id', function(req, res, next) {
         latitude: 'kol',
         longitude: req.body.longitude
     };
-    for(let i = 0; i<locations.length;i++){
-        if(req.params.id=== locations[i].id){
+    let i;
+    for( i = 0; i<locations.length;i++){
+        console.log(req.params.id,'i', locations[i].id)
+        if(req.params.id == locations[i].id){
+            console.log(3);
             locations[i].coordinates.push(obj);
             break;
         }
     }
-    //locations.push(user);
-    res.send({
-        success: true
-    })
+    console.log(locations[i]);
+    res.send('nesto');
 });
 
 module.exports = router;

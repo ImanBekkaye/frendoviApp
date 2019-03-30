@@ -66,7 +66,7 @@ router.post('/', function(req, res, next) {
 router.post('/:id', function(req, res, next) {
     //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
     let obj={
-        latitude: 'kol',
+        latitude: req.body.latitude,
         longitude: req.body.longitude
     };
     let i;

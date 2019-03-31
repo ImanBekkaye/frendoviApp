@@ -53,7 +53,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
     var location = {
-        id: ++b,
+        id: req.body.id,
         email: req.body.email,
         coordinates: []
     };

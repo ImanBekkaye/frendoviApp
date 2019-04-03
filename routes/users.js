@@ -38,7 +38,42 @@ router.get('/all', function(req, res, next) {
         allUsers
     });
 });
+//ruta za stavljanje poruke kod pravog usera
+router.post('/:user', function(req, res, next) {
 
+    var newMess = {
+        friend: req.body.friend,
+        mess: req.body.mess
+    };
+
+    let i;
+    for( i = 0; i<data.length;i++){
+        if(req.params.user === data[i].email){
+            data[i].allMess.push(newMess);
+            break;
+        }
+    }
+
+    res.send({
+        success: true
+    })
+});
+
+router.get('/:user', function(req, res, next) {
+
+
+    let obj = data.find((user)=>{
+
+        if(user.email === req.params.user){
+            return true;
+        }
+        return false;
+    })
+    let allMess=obj.allMess;
+    res.send({
+       allMess
+    })
+});
 
 
 

@@ -1,48 +1,63 @@
 var express = require('express');
 var router = express.Router();
 let b=2;
-var locations = [
-    {   id: 0,
+var data = [
+    {
         email: 'iman2',
         coordinates:[ {
             latitude: 43.8462588,
             longitude: 18.4330765,
         }],
+        allMess: [{friend:'iman',mess: 'poruka'}]
     },
     {
-        id: 1,
+
         email: 'iman2',
         coordinates:[ {
             latitude: 44.8462588,
             longitude: 18.4330765,
         }],
+        allMess: [{friend:'iman',mess: 'poruka'}]
     },
     {
-        id: 2,
         email: 'emira',
         coordinates: [{
             latitude: 45.8462365,
             longitude: 18.4330778,
         }],
+        allMess: [{friend:'iman',mess: 'poruka'}]
     },
 ]
+//ruta za dobijanje svih frendova
+router.get('/', function(req, res, next) {
+    let allUsers=[];
+     data.map((e)=>{
+        allUsers.push(e.email)
+    })
+    res.send({
+        allUsers
+    });
+});
+
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send({
-      locationsSet: locations
+      locationsSet: data
   });
 });
 /* GET users listing. */
 router.get('/:id', function(req, res, next) {
-    var userr = locations.find((user)=>{
-        console.log('id',user.id)
-        console.log('id u parametru', req.params.id)
-        if(user.id==req.params.id){
+    let userr = data.find((user)=>{
+        console.log('id',user.id);
+        console.log('id u parametru', req.params.id);
+        if(user.id === req.params.id){
             console.log('nasli id');
             return true;
         }
-        console.log('nasli id nismo')
+        console.log('nasli id nismo');
         return false;
     })
     console.log('user na krjau',userr);
@@ -57,7 +72,7 @@ router.post('/', function(req, res, next) {
         email: req.body.email,
         coordinates: []
     };
-    locations.push(location);
+    data.push(location);
     res.send({
         success: true
     })
@@ -70,15 +85,15 @@ router.post('/:id', function(req, res, next) {
         longitude: req.body.longitude
     };
     let i;
-    for( i = 0; i<locations.length;i++){
-        console.log(req.params.id,'i', locations[i].id)
-        if(req.params.id == locations[i].id){
+    for( i = 0; i<data.length;i++){
+        console.log(req.params.id,'i', data[i].id)
+        if(req.params.id === data[i].id){
             console.log(3);
-            locations[i].coordinates.push(obj);
+            data[i].coordinates.push(obj);
             break;
         }
     }
-    console.log(locations[i]);
+    console.log(data[i]);
     res.send('nesto');
 });
 

@@ -29,7 +29,7 @@ var data = [
     },
 ]
 //ruta za dobijanje svih frendova
-router.get('/', function(req, res, next) {
+router.get('/all', function(req, res, next) {
     let allUsers=[];
      data.map((e)=>{
         allUsers.push(e.email)

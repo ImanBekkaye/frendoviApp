@@ -38,6 +38,21 @@ router.get('/all', function(req, res, next) {
         allUsers
     });
 });
+router.post('/all', function(req, res, next) {
+    var newUser = {
+            email: req.body.username,
+            coordinates:[ {
+                latitude: 43.8462588,
+                longitude: 18.4330765,
+            }],
+            allMess: []
+        };
+
+   data.push(newUser);
+    res.send({
+        success: true
+    })
+});
 //ruta za stavljanje poruke kod pravog usera
 router.post('/:user', function(req, res, next) {
 

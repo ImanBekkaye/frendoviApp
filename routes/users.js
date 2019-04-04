@@ -3,12 +3,12 @@ var router = express.Router();
 let b=2;
 var data = [
     {
-        email: 'iman2',
+        email: 'iman',
         coordinates:[ {
             latitude: 43.8462588,
             longitude: 18.4330765,
         }],
-        allMess: [{friend:'iman',mess: 'poruka'}]
+        allMess: [{friend:'emira',mess: 'poruka od emire za iman'},{friend:'iman2',mess: 'poruka od iman2 za iman'}]
     },
     {
 
@@ -25,7 +25,7 @@ var data = [
             latitude: 45.8462365,
             longitude: 18.4330778,
         }],
-        allMess: [{friend:'iman',mess: 'poruka'}]
+        allMess: [{friend:'iman2',mess: 'poruka'}]
     },
 ]
 //ruta za dobijanje svih frendova
@@ -74,7 +74,7 @@ router.post('/:user', function(req, res, next) {
     })
 });
 
-router.get('/:user', function(req, res, next) {
+router.get('/:user/:current', function(req, res, next) {
 
 
     let obj = data.find((user)=>{
@@ -84,9 +84,25 @@ router.get('/:user', function(req, res, next) {
         }
         return false;
     })
-    let allMess=obj.allMess;
+    let allMess = obj.allMess;
+
+    console.log(obj.allMess);
+
+    //od svih poruka vratiti samo one koje su od current usera
+    let privateMess=[];
+    allMess.map((e)=>{
+        if(e.friend === req.params.current){
+           privateMess.push({
+               friend: req.params.curr,
+               mess: e.mess
+           })
+
+
+        }
+        return false;
+    })
     res.send({
-       allMess
+       privateMess
     })
 });
 

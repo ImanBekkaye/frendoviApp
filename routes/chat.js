@@ -13,6 +13,17 @@ let allMess = [
         to: 'prima2',
         mess: 'porukica2'
 
+    },
+    {
+        from:'almasa',
+        to: 'demir',
+        mess: 'porukica2'
+
+    },{
+        from:'demir',
+        to: 'almasa',
+        mess: 'porukica22'
+
     }
     ]
 

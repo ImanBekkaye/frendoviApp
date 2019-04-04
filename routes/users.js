@@ -26,7 +26,21 @@ var data = [
             longitude: 18.4330778,
         }],
         allMess: [{friend:'imodifoan',mess: 'poruka'}]
-    },
+    },{
+        email: 'almasa',
+        coordinates: [{
+            latitude: 45.8462365,
+            longitude: 18.4330778,
+        }],
+        allMess: [{friend:'imodifoan',mess: 'poruka'}]
+    },{
+        email: 'demir',
+        coordinates: [{
+            latitude: 45.8462365,
+            longitude: 18.4330778,
+        }],
+        allMess: [{friend:'imodifoan',mess: 'poruka'}]
+    }
 ]
 
 

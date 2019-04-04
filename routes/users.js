@@ -25,9 +25,13 @@ var data = [
             latitude: 45.8462365,
             longitude: 18.4330778,
         }],
-        allMess: [{friend:'iman',mess: 'poruka'}]
+        allMess: [{friend:'imodifoan',mess: 'poruka'}]
     },
 ]
+
+
+
+
 //ruta za dobijanje svih frendova
 router.get('/all', function(req, res, next) {
     let allUsers=[];

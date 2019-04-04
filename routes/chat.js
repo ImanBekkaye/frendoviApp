@@ -40,6 +40,7 @@ router.post('/private', function(req, res, next) {
         mess: req.body.mess
     }
     allMess.push(newPrivateMess);
+    console.log(newPrivateMess);
     res.send({
         success: true
     })

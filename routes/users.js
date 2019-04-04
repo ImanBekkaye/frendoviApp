@@ -3,12 +3,12 @@ var router = express.Router();
 let b=2;
 var data = [
     {
-        email: 'iman',
+        email: 'iman2',
         coordinates:[ {
             latitude: 43.8462588,
             longitude: 18.4330765,
         }],
-        allMess: [{friend:'emira',mess: 'poruka od emire za iman'},{friend:'iman2',mess: 'poruka od iman2 za iman'}]
+        allMess: [{friend:'iman',mess: 'poruka'}]
     },
     {
 
@@ -25,13 +25,13 @@ var data = [
             latitude: 45.8462365,
             longitude: 18.4330778,
         }],
-        allMess: [{friend:'iman2',mess: 'poruka'}]
+        allMess: [{friend:'iman',mess: 'poruka'}]
     },
 ]
 //ruta za dobijanje svih frendova
 router.get('/all', function(req, res, next) {
     let allUsers=[];
-     data.map((e)=>{
+    data.map((e)=>{
         allUsers.push(e.email)
     })
     res.send({
@@ -40,15 +40,15 @@ router.get('/all', function(req, res, next) {
 });
 router.post('/all', function(req, res, next) {
     var newUser = {
-            email: req.body.username,
-            coordinates:[ {
-                latitude: 43.8462588,
-                longitude: 18.4330765,
-            }],
-            allMess: []
-        };
+        email: req.body.username,
+        coordinates:[ {
+            latitude: 43.8462588,
+            longitude: 18.4330765,
+        }],
+        allMess: []
+    };
 
-   data.push(newUser);
+    data.push(newUser);
     res.send({
         success: true
     })
@@ -74,7 +74,7 @@ router.post('/:user', function(req, res, next) {
     })
 });
 
-router.get('/:user/:current', function(req, res, next) {
+router.get('/:user', function(req, res, next) {
 
 
     let obj = data.find((user)=>{
@@ -84,25 +84,9 @@ router.get('/:user/:current', function(req, res, next) {
         }
         return false;
     })
-    let allMess = obj.allMess;
-
-    console.log(obj.allMess);
-
-    //od svih poruka vratiti samo one koje su od current usera
-    let privateMess=[];
-    allMess.map((e)=>{
-        if(e.friend === req.params.current){
-           privateMess.push({
-               friend: req.params.curr,
-               mess: e.mess
-           })
-
-
-        }
-        return false;
-    })
+    let allMess=obj.allMess;
     res.send({
-       privateMess
+        allMess
     })
 });
 
@@ -110,9 +94,9 @@ router.get('/:user/:current', function(req, res, next) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send({
-      locationsSet: data
-  });
+    res.send({
+        locationsSet: data
+    });
 });
 /* GET users listing. */
 router.get('/:id', function(req, res, next) {
@@ -132,7 +116,7 @@ router.get('/:id', function(req, res, next) {
 
 /* POST  */
 router.post('/', function(req, res, next) {
-  //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
+    //napraviomo objekat od podataka koje smo postali na rutu i talav objekat dodajemo u lisu
     var location = {
         id: req.body.id,
         email: req.body.email,

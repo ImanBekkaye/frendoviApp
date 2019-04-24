@@ -15,6 +15,18 @@ let allMess = [
 
     },
     {
+        from:'neko',
+        to: null,
+        mess: 'porukica2'
+
+    },
+    {
+        from:'salje2',
+        to: null,
+        mess: 'porukica2'
+
+    },
+    {
         from:'almasa',
         to: 'demir',
         mess: 'porukica2'
@@ -57,5 +69,33 @@ router.post('/private', function(req, res, next) {
     })
 
 });
+
+router.get('/group', function(req, res, next) {
+
+    let groupMess = []
+    allMess.map( (e) => {
+        if (e.to === null){
+            groupMess.push(e)
+        }
+        return false;
+    })
+    res.send({groupMess});
+});
+
+
+router.post('/group', function(req, res, next) {
+    let newPrivateMess = {
+        from: req.body.fromm,
+        to: req.body.to,
+        mess: req.body.mess
+    }
+    allMess.push(newPrivateMess);
+    console.log(newPrivateMess);
+    res.send({
+        success: true
+    })
+
+});
+
 
 module.exports = router;

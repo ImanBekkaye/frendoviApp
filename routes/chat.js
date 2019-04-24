@@ -84,13 +84,13 @@ router.get('/group', function(req, res, next) {
 
 
 router.post('/group', function(req, res, next) {
-    let newPrivateMess = {
+    let newGroupMess = {
         from: req.body.fromm,
         to: req.body.to,
         mess: req.body.mess
     }
-    allMess.push(newPrivateMess);
-    console.log(newPrivateMess);
+    allMess.push(newGroupeMess);
+    console.log(newGroupMess);
     res.send({
         success: true
     })

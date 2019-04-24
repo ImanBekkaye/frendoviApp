@@ -22,7 +22,7 @@ let allMess = [
     },{
         from:'demir',
         to: 'almasa',
-        mess: 'porukica22'
+        mess: 'porukica222'
 
     }
     ]

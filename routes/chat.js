@@ -89,7 +89,7 @@ router.post('/group', function(req, res, next) {
         to: req.body.to,
         mess: req.body.mess
     }
-    allMess.push(newGroupeMess);
+    allMess.push(newGroupMess);
     console.log(newGroupMess);
     res.send({
         success: true
